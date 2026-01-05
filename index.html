@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="file:///Users/jarvis/Desktop/projects/love-pack/assets/favicon/icons8-cuore-32.png">
+  <link rel="apple-touch-icon" href="file:///Users/jarvis/Desktop/projects/love-pack/assets/favicon/icons8-cuore-32.png">
+  <title>Love Pack</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="title">
+    <img src="./assets/favicon/icons8-cuore-96.png" alt="Love Pack icon" class="logo">
+    <h1>Love Pack</h1>
+  </div>
+
+  <div class="actions">
+    <!-- <label class="upload-btn">
+      📂 Carica
+      <input type="file" accept=".csv" hidden />
+    </label> -->
+
+    <label class="csv-upload">
+      <span class="icon">
+      </span>
+      <span class="text">Carica CSV</span>
+      <input type="file" accept=".csv" hidden />
+    </label>
+
+    <button id="infoBtn" class="icon-btn">
+      <img src="./assets/icons8-info-48.png" alt="Love Pack info icon" class="logo">
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="image-container">
+    <img id="packImage" src="assets/closed.png" alt="Love Pack" />
+    <p id="phrase" class="hidden"></p>
+  </div>
+</main>
+
+<!-- Dialog info -->
+<dialog id="infoDialog">
+  <h3>Come funziona</h3>
+  <p>
+    <ul>
+      <li>Clicca sul pacchetto per scoprire una frase casuale.</li>
+      <li>Puoi caricare un file CSV con le tue frasi personalizzate.</li>
+      <li>Hai un solo tentativo: ricarica la pagina per riprovare.</li>
+    </ul>  
+  </p>
+  <p>
+    <small>
+      <a target="_blank" href="https://icons8.com/icon/oy0ClRW7oson/favorite">cuore</a> icona di <a target="_blank" href="https://icons8.com">Icons8</a><br>
+      <a target="_blank" href="https://icons8.com/icon/uhrsa2cyqq7K/info">Info</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+    </small>    
+  </p>
+  <div class="dialog-actions">
+    <button class="dialog-close-btn" onclick="infoDialog.close()">
+      Chiudi
+    </button>
+  </div>
+</dialog>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script src="script.js"></script>
+<footer class="site-footer">
+  <div class="footer-content">
+    <span class="footer-title">Love Pack</span>
+    <span class="footer-divider">•</span>
+    <span class="footer-credits">
+      Simone Failla · 2026
+    </span>
+    <span class="footer-year">© 2026</span>
+  </div>
+</footer>
+</body>
+</html>
