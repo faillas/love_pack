@@ -46,21 +46,47 @@ const uploadBtn = document.querySelector(".csv-upload");
 
 fileInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
-  if (!file) return;
+
+  if (!file) {
+    showToast("Nessun file selezionato", "error");
+    return;
+  }
+
+  if (!file.name.endsWith(".csv")) {
+    showToast("Formato non valido. Usa un file CSV", "error");
+    fileInput.value = "";
+    return;
+  }
 
   const reader = new FileReader();
+
   reader.onload = () => {
-    phrases = reader.result
+    const rows = reader.result
       .split("\n")
       .map(r => r.trim())
       .filter(r => r.length > 0);
 
+    if (rows.length === 0) {
+      showToast("Il file CSV è vuoto", "error");
+      return;
+    }
+
+    phrases = rows;
+
     uploadBtn.classList.add("loaded");
     uploadBtn.querySelector(".text").textContent = "CSV caricato";
-    showToast("Frasi personalizzate caricate 💖");
+
+    showToast("Frasi personalizzate caricate 💖", "success");
   };
+
+  reader.onerror = () => {
+    showToast("Errore durante il caricamento del file", "error");
+  };
+
   reader.readAsText(file);
 });
+
+
 
 /* Info dialog */
 infoBtn.addEventListener("click", () => {
@@ -68,9 +94,12 @@ infoBtn.addEventListener("click", () => {
 });
 
 /* Toast */
-function showToast(message) {
+function showToast(message, type = "success") {
   toast.textContent = message;
+  toast.className = ""; // reset classi
+  toast.classList.add(type);
   toast.style.opacity = 1;
+
   setTimeout(() => {
     toast.style.opacity = 0;
   }, 2500);

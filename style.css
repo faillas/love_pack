@@ -216,3 +216,14 @@ dialog::backdrop {
 .footer-year {
   opacity: 0.6;
 }
+
+/* Toast states */
+#toast.success {
+  background: #2ecc71; /* verde */
+  z-index: 200;
+}
+
+#toast.error {
+  background: #e74c3c; /* rosso */
+  z-index: 200;
+}
